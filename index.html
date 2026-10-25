@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NZ Curriculum Writing Assessment (Years 7 & 8)</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0d9488;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .header-banner {
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .student-info {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: var(--primary);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .prompt-card {
+            background: #f8fafc;
+            border-left: 5px solid var(--secondary);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+        }
+
+        .prompt-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .criteria-box {
+            background: #fffbebfb;
+            border: 1px solid #fde68a;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .criteria-box ul {
+            margin: 5px 0 0 20px;
+            padding: 0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 280px;
+            padding: 15px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-family: inherit;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .word-counter {
+            text-align: right;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #1d4ed8;
+        }
+
+        .feedback-modal {
+            display: none;
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: white;
+            background: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .teacher-access {
+            margin-top: 40px;
+            text-align: center;
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 15px;
+        }
+
+        .btn-pin {
+            background: transparent;
+            border: 1px solid #94a3b8;
+            color: #64748b;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-banner">
+        <h1>Years 7 & 8 Writing Assessment</h1>
+        <p>New Zealand Curriculum | Modern Day Narrative Assessment</p>
+    </div>
+
+    <!-- Student Inputs (Direct Text Entry) -->
+    <div class="student-info">
+        <div class="input-group">
+            <label for="studentName">Student Full Name:</label>
+            <input type="text" id="studentName" placeholder="Enter your full name">
+        </div>
+        <div class="input-group">
+            <label for="yearLevel">Year Level:</label>
+            <input type="text" id="yearLevel" placeholder="Type Year 7 or Year 8">
+        </div>
+    </div>
+
+    <!-- Writing Task Prompt -->
+    <div class="prompt-card">
+        <h2>Task: The Unexpected Text</h2>
+        <p><strong>Genre:</strong> Modern Day Fiction</p>
+        <p><strong>Required Sentence Starter:</strong> Begin your story directly from this starter:</p>
+        <blockquote style="font-style: italic; background: #ffffff; padding: 12px; border-radius: 6px; border-left: 4px solid var(--primary); margin: 10px 0;">
+            "He looked down at his buzzing phone, realizing the text message wasn't meant for him..."
+        </blockquote>
+        <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Smartphone notification alert" class="prompt-image">
+    </div>
+
+    <!-- Criteria Box -->
+    <div class="criteria-box">
+        <h3>Success Criteria (Target: ~250 words)</h3>
+        <ul>
+            <li><strong>Figurative Language:</strong> Incorporate vivid imagery (similes, metaphors, or sensory action verbs).</li>
+            <li><strong>Writer's Toolbox Sentence Starters:</strong> Vary sentence openings (-ing words, -ly adverbs, prepositional phrases, short sentences).</li>
+            <li><strong>SPaG & Paragraphing:</strong> Use dialogue punctuation, clear paragraphing, commas, and complex conjunctions (e.g., <em>although, because, while, whenever</em>).</li>
+        </ul>
+    </div>
+
+    <!-- Writing Input -->
+    <div class="input-group">
+        <label for="storyText">Write your story below:</label>
+        <textarea id="storyText" oninput="updateWordCount()">He looked down at his buzzing phone, realizing the text message wasn't meant for him...</textarea>
+        <div class="word-counter" id="wordCountDisplay">Word count: 13 / ~250</div>
+    </div>
+
+    <button class="btn-submit" onclick="submitAssessment()">Submit Story & Analyze Writing</button>
+
+    <!-- Immediate Feedback Display -->
+    <div id="feedbackBox" class="feedback-modal">
+        <h2>Diagnostic Assessment Report</h2>
+        <div id="curriculumBadge" class="badge">NZ Curriculum Assessment</div>
+        <div id="aiWarning" style="color: #b91c1c; font-weight: bold; background: #fee2e2; padding: 10px; border-radius: 6px; margin-bottom: 15px; display: none;"></div>
+        <div id="feedbackDetails"></div>
+    </div>
+
+    <!-- Teacher Access Button -->
+    <div class="teacher-access">
+        <button class="btn-pin" onclick="openTeacherPortal()">Teacher Portal (PIN Required)</button>
+    </div>
+</div>
+
+<script>
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydQXv89nO27bPcazZmpHTGpBiF9JMxo2VO3z9D7PyCRDQj2-hFCueXeRjzEUFRJ3TFEg/exec";
+    let pasteCount = 0;
+
+    document.getElementById('storyText').addEventListener('paste', () => {
+        pasteCount++;
+    });
+
+    function updateWordCount() {
+        const text = document.getElementById('storyText').value.trim();
+        const words = text ? text.split(/\s+/).filter(w => w.length > 0).length : 0;
+        document.getElementById('wordCountDisplay').innerText = `Word count: ${words} / ~250`;
+    }
+
+    function submitAssessment() {
+        const name = document.getElementById('studentName').value.trim();
+        const year = document.getElementById('yearLevel').value.trim();
+        const story = document.getElementById('storyText').value.trim();
+        const requiredStarter = "He looked down at his buzzing phone, realizing the text message wasn't meant for him";
+
+        if (!name || !year) {
+            alert("Please type your name and year level before submitting.");
+            return;
+        }
+
+        const wordsArray = story.split(/\s+/).filter(w => w.length > 0);
+        const wordCount = wordsArray.length;
+
+        if (wordCount < 30) {
+            alert("Please complete your writing before submitting.");
+            return;
+        }
+
+        // 1. AI Detection Logic
+        let aiStatus = "Low Risk (Original Student Work)";
+        const aiPhrases = ["testament to", "delve", "tapestry", "moreover", "in conclusion", "furthermore", "a whirlwind of emotions", "nestled in", "serves as a reminder"];
+        let aiMatches = [];
+        aiPhrases.forEach(p => {
+            if (story.toLowerCase().includes(p)) aiMatches.push(p);
+        });
+
+        if (pasteCount > 2 || (wordCount > 100 && aiMatches.length >= 2)) {
+            aiStatus = "High Risk (Automated text / multiple pastes detected)";
+        } else if (pasteCount > 0 || aiMatches.length === 1) {
+            aiStatus = "Moderate Risk (Paste activity observed)";
+        }
+
+        // 2. Writer's Toolbox Sentence Starter Analysis
+        const rawSentences = story.split(/[.!?]+/).map(s => s.trim()).filter(s => s.length > 0);
+        let ingStarters = [];
+        let lyStarters = [];
+        let prepStarters = [];
+        let shortSentences = [];
+        const prepositions = ["in", "on", "under", "behind", "across", "through", "beside", "above", "beneath", "during", "after", "before", "near", "inside"];
+
+        rawSentences.forEach(s => {
+            const cleanTokens = s.replace(/[^a-zA-Z\s]/g, "").trim().split(/\s+/);
+            if (cleanTokens.length === 0 || !cleanTokens[0]) return;
+
+            if (cleanTokens.length <= 5) {
+                shortSentences.push(`"${s}"`);
+            }
+
+            const firstWord = cleanTokens[0].toLowerCase();
+            if (firstWord.endsWith("ing") && firstWord.length > 4) {
+                ingStarters.push(cleanTokens[0]);
+            } else if (firstWord.endsWith("ly") && firstWord.length > 3) {
+                lyStarters.push(cleanTokens[0]);
+            } else if (prepositions.includes(firstWord)) {
+                prepStarters.push(cleanTokens[0]);
+            }
+        });
+
+        // 3. Figurative Language Detection
+        let similes = [];
+        let sensoryVerbs = [];
+        const simileRegex = /\b(like a|like an|like the|as \w+ as)\s+\w+/gi;
+        const simileMatches = story.match(simileRegex);
+        if (simileMatches) similes = simileMatches;
+
+        const sensoryKeywords = ["whispered", "screamed", "roared", "danced", "shimmered", "crept", "hammered", "pounded", "flashed", "shadows", "cold wind", "glowing", "deafening"];
+        sensoryKeywords.forEach(kw => {
+            if (story.toLowerCase().includes(kw)) sensoryVerbs.push(kw);
+        });
+
+        // 4. Structural & SPaG Features
+        const paragraphs = story.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+        const hasDialogue = story.includes('"') || story.includes('“') || story.includes('”');
+        const hasCommas = story.includes(',');
+        
+        let conjunctionsFound = [];
+        const conjunctions = ["because", "although", "even though", "while", "whenever", "since", "unless", "so that", "however"];
+        conjunctions.forEach(c => {
+            if (new RegExp(`\\b${c}\\b`, "i").test(story)) conjunctionsFound.push(c);
+        });
+
+        // 5. NZ Curriculum Phase Analysis (Phase 2, Phase 3, or Phase 4)
+        let phaseLevel = "";
+        let feedbackSummary = "";
+        let nextSteps = "";
+
+        if (wordCount >= 220 && (similes.length >= 2 || sensoryVerbs.length >= 3) && (ingStarters.length + lyStarters.length + prepStarters.length >= 3) && paragraphs.length >= 3 && conjunctionsFound.length >= 2) {
+            phaseLevel = "Phase 4 (Exceeding Phase 3 / Years 9–10 Readiness)";
+            feedbackSummary = "Your piece demonstrates high maturity, sophisticated sentence control, and strong literary devices exceeding Phase 3 standards.";
+            nextSteps = "To deepen your Phase 4 writing, experiment with extended metaphors and subtle pacing changes between action and internal dialogue.";
+        } else if (wordCount >= 120 && (similes.length >= 1 || sensoryVerbs.length >= 1) && (ingStarters.length + lyStarters.length + prepStarters.length >= 1) && rawSentences.length >= 5) {
+            phaseLevel = "Phase 3 (Achieving Years 7–8 Expectations)";
+            feedbackSummary = "You are working securely within Phase 3. You have incorporated key descriptive language and varied your sentence structure effectively.";
+            nextSteps = "To reach Phase 4, expand your story towards 250+ words, ensure full paragraph structures, and add more complex conjunctions (e.g. 'although', 'whenever').";
+        } else {
+            phaseLevel = "Phase 2 (Working Towards Phase 3)";
+            feedbackSummary = "Your story currently sits at Phase 2. You are developing your narrative ideas but need further structural expansion and descriptive technique.";
+            nextSteps = "Focus on writing 150+ words, using quote marks for spoken dialogue, and trying out -ing or -ly sentence openers.";
+        }
+
+        // Summary details
+        let starterSummary = [];
+        if (ingStarters.length > 0) starterSummary.push(`-ing openers (${ingStarters.join(', ')})`);
+        if (lyStarters.length > 0) starterSummary.push(`-ly openers (${lyStarters.join(', ')})`);
+        if (prepStarters.length > 0) starterSummary.push(`prepositional openers (${prepStarters.join(', ')})`);
+        if (shortSentences.length > 0) starterSummary.push(`${shortSentences.length} short sentence(s)`);
+
+        let figurativeSummary = [];
+        if (similes.length > 0) figurativeSummary.push(`Similes: ${similes.join(', ')}`);
+        if (sensoryVerbs.length > 0) figurativeSummary.push(`Descriptive words: ${sensoryVerbs.join(', ')}`);
+
+        // Display Modal
+        const aiWarningElem = document.getElementById('aiWarning');
+        if (aiStatus.includes("High")) {
+            aiWarningElem.innerText = "Notice: Copy-paste activity detected. Please ensure all submitted work is original.";
+            aiWarningElem.style.display = "block";
+        } else {
+            aiWarningElem.style.display = "none";
+        }
+
+        document.getElementById('curriculumBadge').innerText = `${phaseLevel}`;
+
+        let feedbackHTML = `
+            <p><strong>Assessment Level:</strong> <strong>${phaseLevel}</strong></p>
+            <p><strong>Diagnostic Summary:</strong> ${feedbackSummary}</p>
+            <p><strong>Word Count:</strong> ${wordCount} words (Target: ~250 words).</p>
+            
+            <h3>Writing Analysis Breakdown:</h3>
+            <ul>
+                <li><strong>Sentence Openers Used:</strong> ${starterSummary.length > 0 ? starterSummary.join('; ') : 'Try adding -ing or -ly openers.'}</li>
+                <li><strong>Figurative Features:</strong> ${figurativeSummary.length > 0 ? figurativeSummary.join('; ') : 'No similes detected. Try adding imagery like "pounded like thunder".'}</li>
+                <li><strong>SPaG & Structure:</strong> ${paragraphs.length} paragraph(s). Dialogue formatted: ${hasDialogue ? 'Yes' : 'No'}. Conjunctions used: ${conjunctionsFound.length > 0 ? conjunctionsFound.join(', ') : 'None detected'}.</li>
+            </ul>
+
+            <h3>Targeted Next Steps:</h3>
+            <p>${nextSteps}</p>
+        `;
+
+        document.getElementById('feedbackDetails').innerHTML = feedbackHTML;
+        document.getElementById('feedbackBox').style.display = "block";
+
+        // Send Data to Google Sheet
+        const payload = {
+            studentName: name,
+            yearLevel: year,
+            storyText: story,
+            wordCount: wordCount,
+            aiStatus: aiStatus,
+            figurativeFeatures: figurativeSummary.length > 0 ? figurativeSummary.join(' | ') : 'None detected',
+            starterTypes: starterSummary.length > 0 ? starterSummary.join(' | ') : 'None detected',
+            spagAssessment: `Paragraphs: ${paragraphs.length}, Dialogue: ${hasDialogue ? 'Yes' : 'No'}, Conjunctions: ${conjunctionsFound.join(', ')}`,
+            phaseLevel: phaseLevel,
+            feedbackNextSteps: nextSteps
+        };
+
+        if (GOOGLE_SCRIPT_URL) {
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }).catch(err => console.error("Error submitting data:", err));
+        }
+    }
+
+    function openTeacherPortal() {
+        const pin = prompt("Enter Teacher Access PIN:");
+        if (pin === "1335") {
+            alert("PIN Verified! Opening backend Google Sheet...");
+            window.open("https://docs.google.com/spreadsheets/d/14yfeYWt83kZfmpjwSLLBhRXeJGnKcVCYu8leSxSXoxs/edit", "_blank");
+        } else {
+            alert("Incorrect PIN. Access denied.");
+        }
+    }
+</script>
+
+</body>
+</html>
